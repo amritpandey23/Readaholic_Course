@@ -1,0 +1,9 @@
+.wrapper {
+    min-height: calc(100vh - 72px);
+}
+
+.main-footer {
+    background-color: #212529;
+    color: #fefefe;
+    padding: 24px 0;
+}
