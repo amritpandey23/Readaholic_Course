@@ -1,13 +1,9 @@
 from flask import Flask, render_template
+from forms import AdminRegisterationForm, AdminLoginForm
 
 app = Flask(__name__)
 
-# msg = "Hello, Amrit"
-website_name = "Readaholic"
-data = {
-    "website_name": "Readaholic",
-    "author": "Amrit"
-}
+app.config['SECRET_KEY'] = 'secret_key_33'
 
 # root route (directs to root directory of project)
 @app.route("/")
@@ -19,13 +15,17 @@ def home():
 def about():
     return render_template("about.html")
 
-# grouping of routes together
-# @app.route("/route1")
-# @app.route("/route2")
-# @app.route("/route3")
-# def route1():
-#     return f"<h1>{msg}</h1>"
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = AdminRegisterationForm()
+    if form.validate_on_submit():
+        print(form.data)
+    return render_template("register.html", form=form)
 
+@app.route("/login")
+def login():
+    form = AdminLoginForm()
+    return render_template("login.html", form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)
