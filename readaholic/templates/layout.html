@@ -58,23 +58,26 @@
       <main class="main-section mt-4">
         <div class="container">
           <!-- flash messages -->
-          {% with messages = get_flashed_messages(with_categories = True) %} {%
-          if messages %} {% for cat, msg in messages %}
-          <div
-            class="alert alert-{{ cat }} alert-dismissible fade show"
-            role="alert"
-          >
-            {{ msg }}
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          {% endfor %} {% endif %} {% endwith %}
+          {% with messages = get_flashed_messages(with_categories = True) %} 
+            {% if messages %} 
+              {% for cat, msg in messages %}
+              <div
+                class="alert alert-{{ cat }} alert-dismissible fade show"
+                role="alert"
+              >
+                {{ msg }}
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endfor %} 
+            {% endif %} 
+          {% endwith %}
           <!-- content block -->
 
           {% block content %} {% endblock %}
