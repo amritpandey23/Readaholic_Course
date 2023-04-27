@@ -1,1 +1,9 @@
 {% extends "layout.html" %}
+
+{% block content %}
+<ul>
+{% for book in data %}
+<li>{{book.title}}</li>
+{% endfor %}
+</ul>
+{% endblock %}
